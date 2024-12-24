@@ -13,6 +13,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/src/main.cpp" "CMakeFiles/MyOpenGLProject.dir/src/main.cpp.o" "gcc" "CMakeFiles/MyOpenGLProject.dir/src/main.cpp.o.d"
   "/Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/src/resource_manager.cpp" "CMakeFiles/MyOpenGLProject.dir/src/resource_manager.cpp.o" "gcc" "CMakeFiles/MyOpenGLProject.dir/src/resource_manager.cpp.o.d"
   "/Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/src/shader.cpp" "CMakeFiles/MyOpenGLProject.dir/src/shader.cpp.o" "gcc" "CMakeFiles/MyOpenGLProject.dir/src/shader.cpp.o.d"
+  "/Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/src/sprite_renderer.cpp" "CMakeFiles/MyOpenGLProject.dir/src/sprite_renderer.cpp.o" "gcc" "CMakeFiles/MyOpenGLProject.dir/src/sprite_renderer.cpp.o.d"
   "/Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/src/stb_image.cpp" "CMakeFiles/MyOpenGLProject.dir/src/stb_image.cpp.o" "gcc" "CMakeFiles/MyOpenGLProject.dir/src/stb_image.cpp.o.d"
   "/Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/src/texture.cpp" "CMakeFiles/MyOpenGLProject.dir/src/texture.cpp.o" "gcc" "CMakeFiles/MyOpenGLProject.dir/src/texture.cpp.o.d"
   )

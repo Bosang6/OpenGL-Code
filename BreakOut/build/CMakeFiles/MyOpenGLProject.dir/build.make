@@ -125,10 +125,24 @@ CMakeFiles/MyOpenGLProject.dir/src/shader.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/MyOpenGLProject.dir/src/shader.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/src/shader.cpp -o CMakeFiles/MyOpenGLProject.dir/src/shader.cpp.s
 
+CMakeFiles/MyOpenGLProject.dir/src/sprite_renderer.cpp.o: CMakeFiles/MyOpenGLProject.dir/flags.make
+CMakeFiles/MyOpenGLProject.dir/src/sprite_renderer.cpp.o: /Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/src/sprite_renderer.cpp
+CMakeFiles/MyOpenGLProject.dir/src/sprite_renderer.cpp.o: CMakeFiles/MyOpenGLProject.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/MyOpenGLProject.dir/src/sprite_renderer.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MyOpenGLProject.dir/src/sprite_renderer.cpp.o -MF CMakeFiles/MyOpenGLProject.dir/src/sprite_renderer.cpp.o.d -o CMakeFiles/MyOpenGLProject.dir/src/sprite_renderer.cpp.o -c /Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/src/sprite_renderer.cpp
+
+CMakeFiles/MyOpenGLProject.dir/src/sprite_renderer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/MyOpenGLProject.dir/src/sprite_renderer.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/src/sprite_renderer.cpp > CMakeFiles/MyOpenGLProject.dir/src/sprite_renderer.cpp.i
+
+CMakeFiles/MyOpenGLProject.dir/src/sprite_renderer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/MyOpenGLProject.dir/src/sprite_renderer.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/src/sprite_renderer.cpp -o CMakeFiles/MyOpenGLProject.dir/src/sprite_renderer.cpp.s
+
 CMakeFiles/MyOpenGLProject.dir/src/stb_image.cpp.o: CMakeFiles/MyOpenGLProject.dir/flags.make
 CMakeFiles/MyOpenGLProject.dir/src/stb_image.cpp.o: /Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/src/stb_image.cpp
 CMakeFiles/MyOpenGLProject.dir/src/stb_image.cpp.o: CMakeFiles/MyOpenGLProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/MyOpenGLProject.dir/src/stb_image.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/MyOpenGLProject.dir/src/stb_image.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MyOpenGLProject.dir/src/stb_image.cpp.o -MF CMakeFiles/MyOpenGLProject.dir/src/stb_image.cpp.o.d -o CMakeFiles/MyOpenGLProject.dir/src/stb_image.cpp.o -c /Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/src/stb_image.cpp
 
 CMakeFiles/MyOpenGLProject.dir/src/stb_image.cpp.i: cmake_force
@@ -142,7 +156,7 @@ CMakeFiles/MyOpenGLProject.dir/src/stb_image.cpp.s: cmake_force
 CMakeFiles/MyOpenGLProject.dir/src/texture.cpp.o: CMakeFiles/MyOpenGLProject.dir/flags.make
 CMakeFiles/MyOpenGLProject.dir/src/texture.cpp.o: /Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/src/texture.cpp
 CMakeFiles/MyOpenGLProject.dir/src/texture.cpp.o: CMakeFiles/MyOpenGLProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/MyOpenGLProject.dir/src/texture.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/MyOpenGLProject.dir/src/texture.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MyOpenGLProject.dir/src/texture.cpp.o -MF CMakeFiles/MyOpenGLProject.dir/src/texture.cpp.o.d -o CMakeFiles/MyOpenGLProject.dir/src/texture.cpp.o -c /Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/src/texture.cpp
 
 CMakeFiles/MyOpenGLProject.dir/src/texture.cpp.i: cmake_force
@@ -156,7 +170,7 @@ CMakeFiles/MyOpenGLProject.dir/src/texture.cpp.s: cmake_force
 CMakeFiles/MyOpenGLProject.dir/glad.c.o: CMakeFiles/MyOpenGLProject.dir/flags.make
 CMakeFiles/MyOpenGLProject.dir/glad.c.o: /Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/glad.c
 CMakeFiles/MyOpenGLProject.dir/glad.c.o: CMakeFiles/MyOpenGLProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/MyOpenGLProject.dir/glad.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/MyOpenGLProject.dir/glad.c.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/MyOpenGLProject.dir/glad.c.o -MF CMakeFiles/MyOpenGLProject.dir/glad.c.o.d -o CMakeFiles/MyOpenGLProject.dir/glad.c.o -c /Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/glad.c
 
 CMakeFiles/MyOpenGLProject.dir/glad.c.i: cmake_force
@@ -173,6 +187,7 @@ MyOpenGLProject_OBJECTS = \
 "CMakeFiles/MyOpenGLProject.dir/src/main.cpp.o" \
 "CMakeFiles/MyOpenGLProject.dir/src/resource_manager.cpp.o" \
 "CMakeFiles/MyOpenGLProject.dir/src/shader.cpp.o" \
+"CMakeFiles/MyOpenGLProject.dir/src/sprite_renderer.cpp.o" \
 "CMakeFiles/MyOpenGLProject.dir/src/stb_image.cpp.o" \
 "CMakeFiles/MyOpenGLProject.dir/src/texture.cpp.o" \
 "CMakeFiles/MyOpenGLProject.dir/glad.c.o"
@@ -184,6 +199,7 @@ MyOpenGLProject_EXTERNAL_OBJECTS =
 /Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/MyOpenGLProject: CMakeFiles/MyOpenGLProject.dir/src/main.cpp.o
 /Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/MyOpenGLProject: CMakeFiles/MyOpenGLProject.dir/src/resource_manager.cpp.o
 /Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/MyOpenGLProject: CMakeFiles/MyOpenGLProject.dir/src/shader.cpp.o
+/Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/MyOpenGLProject: CMakeFiles/MyOpenGLProject.dir/src/sprite_renderer.cpp.o
 /Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/MyOpenGLProject: CMakeFiles/MyOpenGLProject.dir/src/stb_image.cpp.o
 /Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/MyOpenGLProject: CMakeFiles/MyOpenGLProject.dir/src/texture.cpp.o
 /Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/MyOpenGLProject: CMakeFiles/MyOpenGLProject.dir/glad.c.o
@@ -191,7 +207,7 @@ MyOpenGLProject_EXTERNAL_OBJECTS =
 /Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/MyOpenGLProject: /usr/local/lib/libglfw.3.4.dylib
 /Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/MyOpenGLProject: /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/System/Library/Frameworks/OpenGL.framework
 /Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/MyOpenGLProject: CMakeFiles/MyOpenGLProject.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable /Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/MyOpenGLProject"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable /Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/MyOpenGLProject"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/MyOpenGLProject.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

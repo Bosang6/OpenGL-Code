@@ -11,6 +11,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/MyOpenGLProject.dir/src/resource_manager.cpp.o.d"
   "CMakeFiles/MyOpenGLProject.dir/src/shader.cpp.o"
   "CMakeFiles/MyOpenGLProject.dir/src/shader.cpp.o.d"
+  "CMakeFiles/MyOpenGLProject.dir/src/sprite_renderer.cpp.o"
+  "CMakeFiles/MyOpenGLProject.dir/src/sprite_renderer.cpp.o.d"
   "CMakeFiles/MyOpenGLProject.dir/src/stb_image.cpp.o"
   "CMakeFiles/MyOpenGLProject.dir/src/stb_image.cpp.o.d"
   "CMakeFiles/MyOpenGLProject.dir/src/texture.cpp.o"
