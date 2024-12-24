@@ -1,0 +1,3 @@
+/Users/xiaobo/Desktop/uni/OpenGLCode/Lighting/build/CMakeFiles/MyOpenGLProject.dir
+/Users/xiaobo/Desktop/uni/OpenGLCode/Lighting/build/CMakeFiles/edit_cache.dir
+/Users/xiaobo/Desktop/uni/OpenGLCode/Lighting/build/CMakeFiles/rebuild_cache.dir
