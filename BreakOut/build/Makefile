@@ -177,6 +177,54 @@ src/game.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyOpenGLProject.dir/build.make CMakeFiles/MyOpenGLProject.dir/src/game.cpp.s
 .PHONY : src/game.cpp.s
 
+src/gameLevel.o: src/gameLevel.cpp.o
+.PHONY : src/gameLevel.o
+
+# target to build an object file
+src/gameLevel.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyOpenGLProject.dir/build.make CMakeFiles/MyOpenGLProject.dir/src/gameLevel.cpp.o
+.PHONY : src/gameLevel.cpp.o
+
+src/gameLevel.i: src/gameLevel.cpp.i
+.PHONY : src/gameLevel.i
+
+# target to preprocess a source file
+src/gameLevel.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyOpenGLProject.dir/build.make CMakeFiles/MyOpenGLProject.dir/src/gameLevel.cpp.i
+.PHONY : src/gameLevel.cpp.i
+
+src/gameLevel.s: src/gameLevel.cpp.s
+.PHONY : src/gameLevel.s
+
+# target to generate assembly for a file
+src/gameLevel.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyOpenGLProject.dir/build.make CMakeFiles/MyOpenGLProject.dir/src/gameLevel.cpp.s
+.PHONY : src/gameLevel.cpp.s
+
+src/game_object.o: src/game_object.cpp.o
+.PHONY : src/game_object.o
+
+# target to build an object file
+src/game_object.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyOpenGLProject.dir/build.make CMakeFiles/MyOpenGLProject.dir/src/game_object.cpp.o
+.PHONY : src/game_object.cpp.o
+
+src/game_object.i: src/game_object.cpp.i
+.PHONY : src/game_object.i
+
+# target to preprocess a source file
+src/game_object.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyOpenGLProject.dir/build.make CMakeFiles/MyOpenGLProject.dir/src/game_object.cpp.i
+.PHONY : src/game_object.cpp.i
+
+src/game_object.s: src/game_object.cpp.s
+.PHONY : src/game_object.s
+
+# target to generate assembly for a file
+src/game_object.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyOpenGLProject.dir/build.make CMakeFiles/MyOpenGLProject.dir/src/game_object.cpp.s
+.PHONY : src/game_object.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -336,6 +384,12 @@ help:
 	@echo "... src/game.o"
 	@echo "... src/game.i"
 	@echo "... src/game.s"
+	@echo "... src/gameLevel.o"
+	@echo "... src/gameLevel.i"
+	@echo "... src/gameLevel.s"
+	@echo "... src/game_object.o"
+	@echo "... src/game_object.i"
+	@echo "... src/game_object.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
