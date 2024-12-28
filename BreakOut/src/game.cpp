@@ -7,6 +7,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
+
 SpriteRenderer *Renderer;
 GameObject *Player;
 
@@ -29,7 +30,8 @@ void Game::Init()
 
     Shader &spriteShader = ResourceManager::GetShader("sprite");
 
-    glm::mat4 projection = glm::ortho(0.0f, (float)this->Width, (float)this->Height, 0.0f, -1.0f, 1.0f);
+    //glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(this->Width), static_cast<float>(this->Height), 0.0f, -1.0f, 1.0f);
+    glm::mat4 projection = glm::ortho(0.0f, 800.0f, 600.0f, 0.0f, -1.0f, 1.0f);
 
     spriteShader.Use().SetInteger("image", 0);
     spriteShader.SetMatrix4("projection", projection);
@@ -92,6 +94,7 @@ void Game::Render()
         Renderer->DrawSprite(ResourceManager::GetTexture("background"),
             glm::vec2(0.0f, 0.0f), glm::vec2(this->Width, this->Height), 0.0f);
         // draw level
+
         this->Levels[this->Level].Draw(*Renderer);
     }
 
