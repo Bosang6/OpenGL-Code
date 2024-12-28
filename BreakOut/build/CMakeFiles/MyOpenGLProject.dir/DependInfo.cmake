@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/glad.c" "CMakeFiles/MyOpenGLProject.dir/glad.c.o" "gcc" "CMakeFiles/MyOpenGLProject.dir/glad.c.o.d"
+  "/Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/src/ballObejct.cpp" "CMakeFiles/MyOpenGLProject.dir/src/ballObejct.cpp.o" "gcc" "CMakeFiles/MyOpenGLProject.dir/src/ballObejct.cpp.o.d"
   "/Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/src/game.cpp" "CMakeFiles/MyOpenGLProject.dir/src/game.cpp.o" "gcc" "CMakeFiles/MyOpenGLProject.dir/src/game.cpp.o.d"
   "/Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/src/gameLevel.cpp" "CMakeFiles/MyOpenGLProject.dir/src/gameLevel.cpp.o" "gcc" "CMakeFiles/MyOpenGLProject.dir/src/gameLevel.cpp.o.d"
   "/Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/src/game_object.cpp" "CMakeFiles/MyOpenGLProject.dir/src/game_object.cpp.o" "gcc" "CMakeFiles/MyOpenGLProject.dir/src/game_object.cpp.o.d"

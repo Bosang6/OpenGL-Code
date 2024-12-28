@@ -153,6 +153,30 @@ glad.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyOpenGLProject.dir/build.make CMakeFiles/MyOpenGLProject.dir/glad.c.s
 .PHONY : glad.c.s
 
+src/ballObejct.o: src/ballObejct.cpp.o
+.PHONY : src/ballObejct.o
+
+# target to build an object file
+src/ballObejct.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyOpenGLProject.dir/build.make CMakeFiles/MyOpenGLProject.dir/src/ballObejct.cpp.o
+.PHONY : src/ballObejct.cpp.o
+
+src/ballObejct.i: src/ballObejct.cpp.i
+.PHONY : src/ballObejct.i
+
+# target to preprocess a source file
+src/ballObejct.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyOpenGLProject.dir/build.make CMakeFiles/MyOpenGLProject.dir/src/ballObejct.cpp.i
+.PHONY : src/ballObejct.cpp.i
+
+src/ballObejct.s: src/ballObejct.cpp.s
+.PHONY : src/ballObejct.s
+
+# target to generate assembly for a file
+src/ballObejct.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyOpenGLProject.dir/build.make CMakeFiles/MyOpenGLProject.dir/src/ballObejct.cpp.s
+.PHONY : src/ballObejct.cpp.s
+
 src/game.o: src/game.cpp.o
 .PHONY : src/game.o
 
@@ -381,6 +405,9 @@ help:
 	@echo "... glad.o"
 	@echo "... glad.i"
 	@echo "... glad.s"
+	@echo "... src/ballObejct.o"
+	@echo "... src/ballObejct.i"
+	@echo "... src/ballObejct.s"
 	@echo "... src/game.o"
 	@echo "... src/game.i"
 	@echo "... src/game.s"

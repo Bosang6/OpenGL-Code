@@ -3,10 +3,16 @@
 #include "resource_manager.h"
 #include "sprite_renderer.h"
 #include "game_object.h"
+#include "ballObject.h"
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
+const glm::vec2 INITIAL_BALL_VELOCITY(100.0f, -350.0f);
+
+const float BALL_RADIUS = 12.5f;
+
+BallObject *Ball;
 
 SpriteRenderer *Renderer;
 GameObject *Player;
@@ -32,6 +38,14 @@ void Game::Init()
 
     //glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(this->Width), static_cast<float>(this->Height), 0.0f, -1.0f, 1.0f);
     glm::mat4 projection = glm::ortho(0.0f, 800.0f, 600.0f, 0.0f, -1.0f, 1.0f);
+    /*
+    正交函数定义了 left，right，top，down四条边的界限
+    (0,0)    ...   (800,0)
+    .                  .
+    .                  .
+    .                  .
+    (0,600)  ...   (800,600)
+    */
 
     spriteShader.Use().SetInteger("image", 0);
     spriteShader.SetMatrix4("projection", projection);
@@ -49,27 +63,36 @@ void Game::Init()
     ResourceManager::LoadTexture("texture/block_solid.png", false, "block_solid");
     ResourceManager::LoadTexture("texture/paddle.png", true, "paddle");
 
-    // load levels
-    GameLevel one; one.Load("level/level1.txt", this->Width, this->Height / 2);
-    //GameLevel two; two.Load("levels/two.lvl", this->Width, this->Height / 2);
-    //GameLevel three; three.Load("levels/three.lvl", this->Width, this->Height / 2);
-    //GameLevel four; four.Load("levels/four.lvl", this->Width, this->Height / 2);
-    this->Levels.push_back(one);
-    //this->Levels.push_back(two);
-    //this->Levels.push_back(three);
-    //this->Levels.push_back(four);
-    this->Level = 0;
-
     glm::vec2 playerPos = glm::vec2(
         this->Width / 2.0f - PLAYER_SIZE.x / 2.0f,
         this->Height - PLAYER_SIZE.y
     );
     Player = new GameObject(playerPos, PLAYER_SIZE, ResourceManager::GetTexture("paddle"));
+
+    glm::vec2 ballPos = playerPos + glm::vec2(PLAYER_SIZE.x / 2.0f - BALL_RADIUS, -BALL_RADIUS * 2.0f);
+    Ball = new BallObject(ballPos, BALL_RADIUS, INITIAL_BALL_VELOCITY, ResourceManager::GetTexture("face"));
+
+    // load levels
+
+    GameLevel test; test.Load("level/levelTest.txt", this->Width, this->Height / 2);
+
+    GameLevel one; one.Load("level/level1.txt", this->Width, this->Height / 2);
+    GameLevel two; two.Load("level/level2.txt", this->Width, this->Height / 2);
+    GameLevel three; three.Load("level/level3.txt", this->Width, this->Height / 2);
+    GameLevel four; four.Load("level/level4.txt", this->Width, this->Height / 2);
+
+    this->Levels.push_back(test);
+    this->Levels.push_back(one);
+    this->Levels.push_back(two);
+    this->Levels.push_back(three);
+    this->Levels.push_back(four);
+    this->Level = 4;
 }
 
 void Game::Update(float dt)
 {
-    
+    Ball->Move(dt, this->Width);
+    this->DoCollisions();
 }
 
 void Game::ProcessInput(float dt)
@@ -78,13 +101,21 @@ void Game::ProcessInput(float dt)
         float velocity = PLAYER_VELOCITY * dt;
         // move playerboard
         if(this->Keys[GLFW_KEY_A]){
-            if(Player->Position.x >= 0.0f)
+            if(Player->Position.x >= 0.0f){
                 Player->Position.x -= velocity;
+                if(Ball->Stuck)
+                    Ball->Position.x -= velocity;
+            }
         }
         if(this->Keys[GLFW_KEY_D]){
-            if(Player->Position.x <= this->Width - Player->Size.x)
+            if(Player->Position.x <= this->Width - Player->Size.x){
                 Player->Position.x += velocity;
+                if(Ball->Stuck)
+                    Ball->Position.x += velocity;
+            }
         }
+        if(this->Keys[GLFW_KEY_SPACE])
+            Ball->Stuck = false;
     }
 }
 
@@ -96,7 +127,32 @@ void Game::Render()
         // draw level
 
         this->Levels[this->Level].Draw(*Renderer);
+
+        Ball->Draw(*Renderer);
     }
 
     Player->Draw(*Renderer);
+}
+
+void Game::DoCollisions(){
+    for(GameObject &box : this->Levels[this->Level].Bricks){
+        if(!box.Destroyed){
+            if(CheckCollision(*Ball, box)){
+                if(!box.IsSolid)
+                    box.Destroyed = GL_TRUE;
+            }
+        }
+    }
+}
+
+GLboolean Game::CheckCollision(GameObject &one, GameObject &two){
+    // x
+    bool collisionX = one.Position.x + one.Size.x >= two.Position.x &&
+                      two.Position.x + two.Size.x >= one.Position.x;
+
+    // y
+    bool collisionY = one.Position.y + one.Size.y >= two.Position.y &&
+                      two.Position.y + two.Size.y >= one.Position.y;
+
+    return collisionX && collisionY;
 }

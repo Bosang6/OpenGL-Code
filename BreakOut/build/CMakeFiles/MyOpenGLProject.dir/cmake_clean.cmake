@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "/Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/MyOpenGLProject.pdb"
   "CMakeFiles/MyOpenGLProject.dir/glad.c.o"
   "CMakeFiles/MyOpenGLProject.dir/glad.c.o.d"
+  "CMakeFiles/MyOpenGLProject.dir/src/ballObejct.cpp.o"
+  "CMakeFiles/MyOpenGLProject.dir/src/ballObejct.cpp.o.d"
   "CMakeFiles/MyOpenGLProject.dir/src/game.cpp.o"
   "CMakeFiles/MyOpenGLProject.dir/src/game.cpp.o.d"
   "CMakeFiles/MyOpenGLProject.dir/src/gameLevel.cpp.o"

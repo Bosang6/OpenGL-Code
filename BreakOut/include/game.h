@@ -40,6 +40,9 @@ public:
     void ProcessInput(float dt);
     void Update(float dt);
     void Render();
+    // collision
+    void DoCollisions();
+    GLboolean CheckCollision(GameObject &one, GameObject &two);
 };
 
 #endif
