@@ -58,6 +58,10 @@ public:
     Collision CheckCollision(BallObject &one, GameObject &two);
     float clamp(float value, float min, float max);
     Direction VectorDirection(glm::vec2 target);
+
+    // reset
+    void ResetLevel();
+    void ResetPlayer();
 };
 
 #endif

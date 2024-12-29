@@ -86,13 +86,18 @@ void Game::Init()
     this->Levels.push_back(two);
     this->Levels.push_back(three);
     this->Levels.push_back(four);
-    this->Level = 4;
+    this->Level = 3;
 }
 
 void Game::Update(float dt)
 {
     Ball->Move(dt, this->Width);
     this->DoCollisions();
+
+    if(Ball->Position.y >= this->Height){ // 球体是否接触到底部边界
+        this->ResetLevel();
+        this->ResetPlayer();
+    }
 }
 
 void Game::ProcessInput(float dt)
@@ -187,7 +192,8 @@ void Game::DoCollisions(){
         GLfloat strength = 2.0f;
         glm::vec2 oldVelocity = Ball->Velocity;
         Ball->Velocity.x = INITIAL_BALL_VELOCITY.x * percentage * strength;
-        Ball->Velocity.y = -Ball->Velocity.y;
+        //Ball->Velocity.y = -Ball->Velocity.y;
+        Ball->Velocity.y = -1 * abs(Ball->Velocity.y);
         Ball->Velocity = glm::normalize(Ball->Velocity) * glm::length(oldVelocity);
     }
 }
@@ -285,4 +291,24 @@ Collision Game::CheckCollision(BallObject &one, GameObject &two){
     else{
         return std::make_tuple(GL_FALSE, UP, glm::vec2(0, 0));
     }
+}
+
+void Game::ResetLevel(){
+    if(this->Level == 0)
+        this->Levels[0].Load("level/level1.txt", this->Width, this->Height / 2);
+    else if(this->Level == 1)
+        this->Levels[1].Load("level/level2.txt", this->Width, this->Height / 2);
+    else if(this->Level == 2)
+        this->Levels[2].Load("level/level3.txt", this->Width, this->Height / 2);
+    else if(this->Level == 3)
+        this->Levels[3].Load("level/level3.txt", this->Width, this->Height / 2);
+    else if(this->Level == 4)
+        this->Levels[4].Load("level/level4.txt", this->Width, this->Height / 2);
+}
+
+void Game::ResetPlayer(){
+    //
+    Player->Size = PLAYER_SIZE;
+    Player->Position = glm::vec2(this->Width / 2.0f - PLAYER_SIZE.x / 2.0f, this->Height - PLAYER_SIZE.y);
+    Ball->Reset(Player->Position + glm::vec2(PLAYER_SIZE.x / 2.0f - BALL_RADIUS, -(BALL_RADIUS * 2.0f)), INITIAL_BALL_VELOCITY);
 }
