@@ -137,11 +137,58 @@ void Game::Render()
 void Game::DoCollisions(){
     for(GameObject &box : this->Levels[this->Level].Bricks){
         if(!box.Destroyed){
+
+            // 穿模碰撞
+            /*
             if(CheckCollision(*Ball, box)){
                 if(!box.IsSolid)
                     box.Destroyed = GL_TRUE;
             }
+            */
+
+           Collision collision = CheckCollision(*Ball, box);
+           if(std::get<0>(collision)){ // 如果 检测到碰撞
+                // 如果砖块不是实心，则销毁
+                if(!box.IsSolid)
+                    box.Destroyed = GL_TRUE;
+                // 碰撞处理
+                Direction dir = std::get<1>(collision);
+                glm::vec2 diff_vector = std::get<2>(collision);
+                if(dir == LEFT || dir == RIGHT){ // 水平方向碰撞
+                    Ball->Velocity.x = -Ball->Velocity.x;
+                    // 重定位
+                    GLfloat penetration = Ball->Radius - std::abs(diff_vector.x);
+                    if(dir == LEFT)
+                        Ball->Position.x += penetration; //将球体右移
+                    else
+                        Ball->Position.x -= penetration; //左移
+                }
+                else{ // 垂直方向
+                    Ball->Velocity.y = -Ball->Velocity.y; //反转垂直速度
+                    // 重定位
+                    GLfloat penetration = Ball->Radius - std::abs(diff_vector.y);
+                    if(dir == UP)
+                        Ball->Position.y -= penetration; // 将球上移
+                    else
+                        Ball->Position.y += penetration;
+                }
+           }
+
         }
+    }
+
+    Collision result = CheckCollision(*Ball, *Player);
+    if(!Ball->Stuck && std::get<0>(result)){
+        // 检查碰到了挡板的哪个位置，并且根据碰到的哪个位置来改变速度
+        GLfloat centerBoard = Player->Position.x + Player->Size.x / 2;
+        GLfloat distance = (Ball->Position.x + Ball->Radius) - centerBoard;
+        GLfloat percentage = distance / (Player->Size.x / 2);
+        // 依据结果移动
+        GLfloat strength = 2.0f;
+        glm::vec2 oldVelocity = Ball->Velocity;
+        Ball->Velocity.x = INITIAL_BALL_VELOCITY.x * percentage * strength;
+        Ball->Velocity.y = -Ball->Velocity.y;
+        Ball->Velocity = glm::normalize(Ball->Velocity) * glm::length(oldVelocity);
     }
 }
 
@@ -164,6 +211,8 @@ float Game::clamp(float value, float min, float max){
     return std::max(min, std::min(max, value));
 }
 
+// AABB Circle collision detection 碰撞检测
+/*
 GLboolean Game::CheckCollision(BallObject &one, GameObject &two){
     // 获取球的中心坐标
     glm::vec2 center(one.Position + one.Radius);
@@ -187,4 +236,53 @@ GLboolean Game::CheckCollision(BallObject &one, GameObject &two){
     difference = closest - center;
     return glm::length(difference) < one.Radius;
 
+}
+*/
+
+Direction Game::VectorDirection(glm::vec2 target){
+    glm::vec2 compass[] = {
+        glm::vec2(0.0f, 1.0f), // UP
+        glm::vec2(1.0f, 0.0f), // RIGHT
+        glm::vec2(0.0f, -1.0f),// DOWN
+        glm::vec2(-1.0f, 0.0f) // LEFT
+    };
+    GLfloat max = 0.0f;
+    GLuint best_match = -1;
+    for(GLuint i = 0; i < 4; i++){
+        GLfloat dot_product = glm::dot(glm::normalize(target), compass[i]);
+        if(dot_product > max){
+            max = dot_product;
+            best_match = i;
+        }
+    }
+    return (Direction)best_match;
+}
+
+Collision Game::CheckCollision(BallObject &one, GameObject &two){
+    // 获取球的中心坐标
+    glm::vec2 center(one.Position + one.Radius);
+
+    // half-width & half-height
+    glm::vec2 aabb_half_extents(two.Size.x / 2, two.Size.y / 2);
+
+    // 获取B点坐标，即AABB中点
+    glm::vec2 aabb_center(
+        two.Position.x + aabb_half_extents.x,
+        two.Position.y + aabb_half_extents.y
+    );
+
+    // 获取D，圆形终点C与AABB中点的差值，用于计算clamped值
+    glm::vec2 difference = center - aabb_center;
+    //                                            (-h | -w)              (h | w)
+    glm::vec2 clamped = glm::clamp(difference, -aabb_half_extents, aabb_half_extents);
+    // P点坐标
+    glm::vec2 closest = aabb_center + clamped;
+    // 判断圆心C和P的距离是否小于圆形半径(radius)
+    difference = closest - center;
+    if(glm::length(difference) < one.Radius){
+        return std::make_tuple(GL_TRUE, VectorDirection(difference), difference);
+    }
+    else{
+        return std::make_tuple(GL_FALSE, UP, glm::vec2(0, 0));
+    }
 }

@@ -23,6 +23,8 @@ enum Direction {
     LEFT
 };
 
+typedef std::tuple<GLboolean, Direction, glm::vec2> Collision;
+
 // paddle size
 const glm::vec2 PLAYER_SIZE(100.0f, 20.0f);
 // velocity of the player paddle
@@ -52,8 +54,10 @@ public:
     // collision
     void DoCollisions();
     //GLboolean CheckCollision(GameObject &one, GameObject &two);
-    GLboolean CheckCollision(BallObject &one, GameObject &two);
+    //GLboolean CheckCollision(BallObject &one, GameObject &two);
+    Collision CheckCollision(BallObject &one, GameObject &two);
     float clamp(float value, float min, float max);
+    Direction VectorDirection(glm::vec2 target);
 };
 
 #endif
