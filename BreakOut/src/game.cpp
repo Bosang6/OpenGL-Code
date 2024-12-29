@@ -145,6 +145,8 @@ void Game::DoCollisions(){
     }
 }
 
+// 经典方形AABB碰撞，遵循 LLRR 原则（x和y）
+/*
 GLboolean Game::CheckCollision(GameObject &one, GameObject &two){
     // x
     bool collisionX = one.Position.x + one.Size.x >= two.Position.x &&
@@ -155,4 +157,34 @@ GLboolean Game::CheckCollision(GameObject &one, GameObject &two){
                       two.Position.y + two.Size.y >= one.Position.y;
 
     return collisionX && collisionY;
+}
+*/
+
+float Game::clamp(float value, float min, float max){
+    return std::max(min, std::min(max, value));
+}
+
+GLboolean Game::CheckCollision(BallObject &one, GameObject &two){
+    // 获取球的中心坐标
+    glm::vec2 center(one.Position + one.Radius);
+
+    // half-width & half-height
+    glm::vec2 aabb_half_extents(two.Size.x / 2, two.Size.y / 2);
+
+    // 获取B点坐标，即AABB中点
+    glm::vec2 aabb_center(
+        two.Position.x + aabb_half_extents.x,
+        two.Position.y + aabb_half_extents.y
+    );
+
+    // 获取D，圆形终点C与AABB中点的差值，用于计算clamped值
+    glm::vec2 difference = center - aabb_center;
+    //                                            (-h | -w)              (h | w)
+    glm::vec2 clamped = glm::clamp(difference, -aabb_half_extents, aabb_half_extents);
+    // P点坐标
+    glm::vec2 closest = aabb_center + clamped;
+    // 判断圆心C和P的距离是否小于圆形半径(radius)
+    difference = closest - center;
+    return glm::length(difference) < one.Radius;
+
 }

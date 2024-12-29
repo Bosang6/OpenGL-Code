@@ -6,12 +6,21 @@
 #include <GLFW/glfw3.h>
 
 #include "gameLevel.h"
+#include "ballObject.h"
 
 // Represents the current state of the game
 enum GameState {
     GAME_ACTIVE,
     GAME_MENU,
     GAME_WIN
+};
+
+// 撞击方向
+enum Direction {
+    UP,
+    RIGHT,
+    DOWN,
+    LEFT
 };
 
 // paddle size
@@ -42,7 +51,9 @@ public:
     void Render();
     // collision
     void DoCollisions();
-    GLboolean CheckCollision(GameObject &one, GameObject &two);
+    //GLboolean CheckCollision(GameObject &one, GameObject &two);
+    GLboolean CheckCollision(BallObject &one, GameObject &two);
+    float clamp(float value, float min, float max);
 };
 
 #endif
