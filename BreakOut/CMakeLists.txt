@@ -11,6 +11,9 @@ include_directories(include)
 find_package(OpenGL REQUIRED)
 find_package(glfw3 3.3 REQUIRED)
 
+# 查找 Assimp 库
+find_package(assimp REQUIRED)
+
 # 查找 src 目录下的所有 .cpp 文件
 file(GLOB SOURCES src/*.cpp)
 
@@ -24,4 +27,8 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR})
 add_executable(${PROJECT_NAME} ${SOURCES})
 
 # 链接库
-target_link_libraries(${PROJECT_NAME} glfw OpenGL::GL)
+target_link_libraries(${PROJECT_NAME} 
+    glfw 
+    OpenGL::GL
+    assimp
+)

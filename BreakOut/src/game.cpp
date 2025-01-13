@@ -86,7 +86,7 @@ void Game::Init()
     this->Levels.push_back(two);
     this->Levels.push_back(three);
     this->Levels.push_back(four);
-    this->Level = 3;
+    this->Level = 2;
 }
 
 void Game::Update(float dt)
