@@ -50,7 +50,7 @@ public:
     // game loop
     void ProcessInput(float dt);
     void Update(float dt);
-    void Render();
+    void Render(float dt);
     // collision
     void DoCollisions();
     //GLboolean CheckCollision(GameObject &one, GameObject &two);
@@ -62,6 +62,14 @@ public:
     // reset
     void ResetLevel();
     void ResetPlayer();
+
+    int Lives;
+
+    // 防止按一下快速跳跃
+    GLboolean KeysProcessed[1024];
+
+    // 分数
+    int Score;
 };
 
 #endif

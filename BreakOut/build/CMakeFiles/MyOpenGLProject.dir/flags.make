@@ -5,13 +5,13 @@
 # compile CXX with /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++
 C_DEFINES = 
 
-C_INCLUDES = -I/Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/include -isystem /usr/local/include -iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/System/Library/Frameworks
+C_INCLUDES = -I/Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/include -I/usr/local/Cellar/freetype/2.13.3/include/freetype2 -I/usr/local/Cellar/freetype/2.13.3/include -isystem /usr/local/include -iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/System/Library/Frameworks
 
 C_FLAGS =  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk -mmacosx-version-min=13.5
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/include -isystem /usr/local/include -iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/System/Library/Frameworks
+CXX_INCLUDES = -I/Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/include -I/usr/local/Cellar/freetype/2.13.3/include/freetype2 -I/usr/local/Cellar/freetype/2.13.3/include -isystem /usr/local/include -iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/System/Library/Frameworks
 
 CXX_FLAGS = -std=gnu++11 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk -mmacosx-version-min=13.5
 

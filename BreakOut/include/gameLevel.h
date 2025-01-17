@@ -25,6 +25,8 @@ class GameLevel{
     // check if the level is completed (all non-solid titles are destroyed)
     bool IsCompleted();
 
+    std::vector<std::vector<unsigned int>> tileData;
+
 private:
     // initialize level from title data
     void init(std::vector<std::vector<unsigned int>> tileData,

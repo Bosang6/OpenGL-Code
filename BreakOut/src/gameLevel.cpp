@@ -10,12 +10,13 @@
 void GameLevel::Load(const char *file, unsigned int levelWidth, unsigned int levelHeight){
     // clear old data
     this->Bricks.clear();
+    this->tileData.clear();
     // load from file
     unsigned int tileCode;
     GameLevel level;
     std::string line;
     std::ifstream fstream(file);
-    std::vector<std::vector<unsigned int>> tileData;
+    //std::vector<std::vector<unsigned int>> tileData;
     if(fstream){
         while(std::getline(fstream, line)){
             std::istringstream sstream(line);
@@ -23,10 +24,10 @@ void GameLevel::Load(const char *file, unsigned int levelWidth, unsigned int lev
             while(sstream >> tileCode){
                 row.push_back(tileCode);
             }
-            tileData.push_back(row);
+            this->tileData.push_back(row);
         }
-        if(tileData.size() > 0){
-            this->init(tileData, levelWidth, levelHeight);
+        if(this->tileData.size() > 0){
+            this->init(this->tileData, levelWidth, levelHeight);
         }
     }
 
@@ -75,7 +76,7 @@ void GameLevel::init(std::vector<std::vector<unsigned int>> tileData, unsigned i
 
                 glm::vec2 pos(unit_width * x, unit_height * y);
                 glm::vec2 size(unit_width, unit_height);
-                this->Bricks.push_back(GameObject(pos, size, ResourceManager::GetTexture("block"), color));
+                this->Bricks.push_back(GameObject(pos, size, ResourceManager::GetTexture("block"), color, (int)tileData[y][x]));
             }
         }
     }

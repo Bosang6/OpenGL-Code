@@ -4,9 +4,16 @@
 #include "sprite_renderer.h"
 #include "game_object.h"
 #include "ballObject.h"
+#include "particle_generator.h"
+#include "textRenderer.h"
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+
+#include <sstream>
+#include <string>
+
+#include <iostream>
 
 const glm::vec2 INITIAL_BALL_VELOCITY(100.0f, -350.0f);
 
@@ -17,8 +24,16 @@ BallObject *Ball;
 SpriteRenderer *Renderer;
 GameObject *Player;
 
+TextRenderer *Text;
+
+ParticleGenerator *Particles;
+
+float fpsTimer = 0.0f;
+int FPScounter = 0;
+int FPS = 0;
+
 Game::Game(unsigned int width, unsigned int height) 
-    : State(GAME_ACTIVE), Keys(), Width(width), Height(height)
+    : State(GAME_MENU), Keys(), Width(width), Height(height)
 { 
 
 }
@@ -33,6 +48,12 @@ Game::~Game()
 void Game::Init()
 {
     ResourceManager::LoadShader("shader/spriteVertex.vs", "shader/spriteFragment.fs", nullptr, "sprite");
+
+    Text = new TextRenderer(this->Width, this->Height);
+    Text->Load("font/OCRAEXT.TTF", 24);
+
+    // 粒子着色器
+    ResourceManager::LoadShader("shader/particle.vs", "shader/particle.fs", nullptr, "particle");
 
     Shader &spriteShader = ResourceManager::GetShader("sprite");
 
@@ -50,6 +71,8 @@ void Game::Init()
     spriteShader.Use().SetInteger("image", 0);
     spriteShader.SetMatrix4("projection", projection);
 
+    ResourceManager::GetShader("particle").Use().SetMatrix4("projection", projection);
+
     //ResourceManager::GetShader("sprite").Use().SetInteger("image", 0);
     //ResourceManager::GetShader("sprite").SetMatrix4("projection", projection);
 
@@ -63,6 +86,8 @@ void Game::Init()
     ResourceManager::LoadTexture("texture/block_solid.png", false, "block_solid");
     ResourceManager::LoadTexture("texture/paddle.png", true, "paddle");
 
+    ResourceManager::LoadTexture("texture/particle.png", GL_TRUE, "particle");
+
     glm::vec2 playerPos = glm::vec2(
         this->Width / 2.0f - PLAYER_SIZE.x / 2.0f,
         this->Height - PLAYER_SIZE.y
@@ -74,19 +99,27 @@ void Game::Init()
 
     // load levels
 
-    GameLevel test; test.Load("level/levelTest.txt", this->Width, this->Height / 2);
-
     GameLevel one; one.Load("level/level1.txt", this->Width, this->Height / 2);
     GameLevel two; two.Load("level/level2.txt", this->Width, this->Height / 2);
     GameLevel three; three.Load("level/level3.txt", this->Width, this->Height / 2);
     GameLevel four; four.Load("level/level4.txt", this->Width, this->Height / 2);
 
-    this->Levels.push_back(test);
     this->Levels.push_back(one);
     this->Levels.push_back(two);
     this->Levels.push_back(three);
     this->Levels.push_back(four);
-    this->Level = 2;
+    this->Level = 0;
+
+    // particles 粒子数组构建
+    Particles = new ParticleGenerator(
+        ResourceManager::GetShader("particle"),
+        ResourceManager::GetTexture("particle"),
+        500
+    );
+
+    this->Lives = 3;
+
+    this->Score = 0;
 }
 
 void Game::Update(float dt)
@@ -94,14 +127,46 @@ void Game::Update(float dt)
     Ball->Move(dt, this->Width);
     this->DoCollisions();
 
+    Particles->Update(dt, *Ball, 2, glm::vec2(Ball->Radius / 2));
+
     if(Ball->Position.y >= this->Height){ // 球体是否接触到底部边界
+        this->Lives--;
+        // 检查生命值
+        if(this->Lives == 0){
+            this->ResetLevel();
+            this->State = GAME_MENU;
+        }
+        this->ResetPlayer();
+    }
+
+    if(this->State == GAME_ACTIVE && this->Levels[this->Level].IsCompleted()){
         this->ResetLevel();
         this->ResetPlayer();
+        //Effects
+        this->State = GAME_WIN;
     }
 }
 
 void Game::ProcessInput(float dt)
 {
+    if(this->State == GAME_MENU){
+        if(this->Keys[GLFW_KEY_ENTER] && !this->KeysProcessed[GLFW_KEY_ENTER]){
+            this->State = GAME_ACTIVE;
+            this->KeysProcessed[GLFW_KEY_ENTER] = GL_TRUE;
+        }
+        if(this->Keys[GLFW_KEY_W] && !this->KeysProcessed[GLFW_KEY_W]){
+            this->Level = (this->Level + 1) % 4;
+            this->KeysProcessed[GLFW_KEY_W] = GL_TRUE;
+        }
+        if(this->Keys[GLFW_KEY_S] && !this->KeysProcessed[GLFW_KEY_S]){
+            if(this->Level > 0)
+                --this->Level;
+            else
+                this->Level = 3;
+            
+            this->KeysProcessed[GLFW_KEY_S] = GL_TRUE;
+        }
+    }
     if(this->State == GAME_ACTIVE){
         float velocity = PLAYER_VELOCITY * dt;
         // move playerboard
@@ -122,21 +187,51 @@ void Game::ProcessInput(float dt)
         if(this->Keys[GLFW_KEY_SPACE])
             Ball->Stuck = false;
     }
+    if(this->State == GAME_WIN){
+        if(this->Keys[GLFW_KEY_ENTER]){
+            this->KeysProcessed[GLFW_KEY_ENTER] = GL_TRUE;
+            this->State = GAME_MENU;
+        }
+    }
 }
 
-void Game::Render()
+void Game::Render(float dt)
 {
-    if(this->State == GAME_ACTIVE){
+    if(this->State == GAME_ACTIVE || this->State == GAME_MENU || this->State == GAME_WIN){
         Renderer->DrawSprite(ResourceManager::GetTexture("background"),
             glm::vec2(0.0f, 0.0f), glm::vec2(this->Width, this->Height), 0.0f);
         // draw level
 
         this->Levels[this->Level].Draw(*Renderer);
 
-        Ball->Draw(*Renderer);
-    }
+        Particles->Draw();
 
-    Player->Draw(*Renderer);
+        Ball->Draw(*Renderer);
+
+        Player->Draw(*Renderer);
+
+        std::stringstream ss; ss << this->Lives;
+        Text->RenderText("Lives:" + ss.str(), 5.0f, 5.0f, 1.0f);
+
+        // FPS渲染
+        fpsTimer += dt;
+        FPScounter++;
+        if(fpsTimer >= 1.0f){
+            fpsTimer = 0.0f;
+            FPS = FPScounter;
+            FPScounter = 0;
+        } 
+        Text->RenderText("FPS:" + std::to_string(FPS), 750.0f, 5.0f, 0.5f);
+        Text->RenderText("Score:" + std::to_string(Score), 300.0f, 5.0f, 2.0f);
+    }
+    if(this->State == GAME_MENU){
+        Text->RenderText("Press ENTER to start", 250.0f, Height / 2, 1.0f);
+        Text->RenderText("Press W or S to select level", 245.0f, Height / 2 + 20.0f, 0.75f);
+    }
+    if(this->State == GAME_WIN){
+        Text->RenderText("You WON !!!", 320.0, Height / 2 - 20.0, 1.0, glm::vec3(0.0, 1.0, 0.0));
+        Text->RenderText("Press ENTER to retry or ESC to quit", 130.0, Height / 2, 1.0, glm::vec3(1.0, 1.0, 0.0));
+    }
 }
 
 void Game::DoCollisions(){
@@ -154,8 +249,10 @@ void Game::DoCollisions(){
            Collision collision = CheckCollision(*Ball, box);
            if(std::get<0>(collision)){ // 如果 检测到碰撞
                 // 如果砖块不是实心，则销毁
-                if(!box.IsSolid)
+                if(!box.IsSolid){
                     box.Destroyed = GL_TRUE;
+                    this->Score += box.Score;
+                }
                 // 碰撞处理
                 Direction dir = std::get<1>(collision);
                 glm::vec2 diff_vector = std::get<2>(collision);
@@ -294,6 +391,9 @@ Collision Game::CheckCollision(BallObject &one, GameObject &two){
 }
 
 void Game::ResetLevel(){
+    this->Lives = 3;
+    this->Score = 0;
+
     if(this->Level == 0)
         this->Levels[0].Load("level/level1.txt", this->Width, this->Height / 2);
     else if(this->Level == 1)

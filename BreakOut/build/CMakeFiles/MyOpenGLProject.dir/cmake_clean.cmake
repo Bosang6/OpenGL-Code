@@ -13,6 +13,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/MyOpenGLProject.dir/src/game_object.cpp.o.d"
   "CMakeFiles/MyOpenGLProject.dir/src/main.cpp.o"
   "CMakeFiles/MyOpenGLProject.dir/src/main.cpp.o.d"
+  "CMakeFiles/MyOpenGLProject.dir/src/particle_generator.cpp.o"
+  "CMakeFiles/MyOpenGLProject.dir/src/particle_generator.cpp.o.d"
   "CMakeFiles/MyOpenGLProject.dir/src/resource_manager.cpp.o"
   "CMakeFiles/MyOpenGLProject.dir/src/resource_manager.cpp.o.d"
   "CMakeFiles/MyOpenGLProject.dir/src/shader.cpp.o"
@@ -21,6 +23,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/MyOpenGLProject.dir/src/sprite_renderer.cpp.o.d"
   "CMakeFiles/MyOpenGLProject.dir/src/stb_image.cpp.o"
   "CMakeFiles/MyOpenGLProject.dir/src/stb_image.cpp.o.d"
+  "CMakeFiles/MyOpenGLProject.dir/src/textRenderer.cpp.o"
+  "CMakeFiles/MyOpenGLProject.dir/src/textRenderer.cpp.o.d"
   "CMakeFiles/MyOpenGLProject.dir/src/texture.cpp.o"
   "CMakeFiles/MyOpenGLProject.dir/src/texture.cpp.o.d"
 )

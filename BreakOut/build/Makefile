@@ -273,6 +273,30 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyOpenGLProject.dir/build.make CMakeFiles/MyOpenGLProject.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/particle_generator.o: src/particle_generator.cpp.o
+.PHONY : src/particle_generator.o
+
+# target to build an object file
+src/particle_generator.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyOpenGLProject.dir/build.make CMakeFiles/MyOpenGLProject.dir/src/particle_generator.cpp.o
+.PHONY : src/particle_generator.cpp.o
+
+src/particle_generator.i: src/particle_generator.cpp.i
+.PHONY : src/particle_generator.i
+
+# target to preprocess a source file
+src/particle_generator.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyOpenGLProject.dir/build.make CMakeFiles/MyOpenGLProject.dir/src/particle_generator.cpp.i
+.PHONY : src/particle_generator.cpp.i
+
+src/particle_generator.s: src/particle_generator.cpp.s
+.PHONY : src/particle_generator.s
+
+# target to generate assembly for a file
+src/particle_generator.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyOpenGLProject.dir/build.make CMakeFiles/MyOpenGLProject.dir/src/particle_generator.cpp.s
+.PHONY : src/particle_generator.cpp.s
+
 src/resource_manager.o: src/resource_manager.cpp.o
 .PHONY : src/resource_manager.o
 
@@ -369,6 +393,30 @@ src/stb_image.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyOpenGLProject.dir/build.make CMakeFiles/MyOpenGLProject.dir/src/stb_image.cpp.s
 .PHONY : src/stb_image.cpp.s
 
+src/textRenderer.o: src/textRenderer.cpp.o
+.PHONY : src/textRenderer.o
+
+# target to build an object file
+src/textRenderer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyOpenGLProject.dir/build.make CMakeFiles/MyOpenGLProject.dir/src/textRenderer.cpp.o
+.PHONY : src/textRenderer.cpp.o
+
+src/textRenderer.i: src/textRenderer.cpp.i
+.PHONY : src/textRenderer.i
+
+# target to preprocess a source file
+src/textRenderer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyOpenGLProject.dir/build.make CMakeFiles/MyOpenGLProject.dir/src/textRenderer.cpp.i
+.PHONY : src/textRenderer.cpp.i
+
+src/textRenderer.s: src/textRenderer.cpp.s
+.PHONY : src/textRenderer.s
+
+# target to generate assembly for a file
+src/textRenderer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyOpenGLProject.dir/build.make CMakeFiles/MyOpenGLProject.dir/src/textRenderer.cpp.s
+.PHONY : src/textRenderer.cpp.s
+
 src/texture.o: src/texture.cpp.o
 .PHONY : src/texture.o
 
@@ -420,6 +468,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/particle_generator.o"
+	@echo "... src/particle_generator.i"
+	@echo "... src/particle_generator.s"
 	@echo "... src/resource_manager.o"
 	@echo "... src/resource_manager.i"
 	@echo "... src/resource_manager.s"
@@ -432,6 +483,9 @@ help:
 	@echo "... src/stb_image.o"
 	@echo "... src/stb_image.i"
 	@echo "... src/stb_image.s"
+	@echo "... src/textRenderer.o"
+	@echo "... src/textRenderer.i"
+	@echo "... src/textRenderer.s"
 	@echo "... src/texture.o"
 	@echo "... src/texture.i"
 	@echo "... src/texture.s"
