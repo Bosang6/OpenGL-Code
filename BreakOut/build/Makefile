@@ -249,6 +249,30 @@ src/game_object.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyOpenGLProject.dir/build.make CMakeFiles/MyOpenGLProject.dir/src/game_object.cpp.s
 .PHONY : src/game_object.cpp.s
 
+src/light.o: src/light.cpp.o
+.PHONY : src/light.o
+
+# target to build an object file
+src/light.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyOpenGLProject.dir/build.make CMakeFiles/MyOpenGLProject.dir/src/light.cpp.o
+.PHONY : src/light.cpp.o
+
+src/light.i: src/light.cpp.i
+.PHONY : src/light.i
+
+# target to preprocess a source file
+src/light.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyOpenGLProject.dir/build.make CMakeFiles/MyOpenGLProject.dir/src/light.cpp.i
+.PHONY : src/light.cpp.i
+
+src/light.s: src/light.cpp.s
+.PHONY : src/light.s
+
+# target to generate assembly for a file
+src/light.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyOpenGLProject.dir/build.make CMakeFiles/MyOpenGLProject.dir/src/light.cpp.s
+.PHONY : src/light.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -465,6 +489,9 @@ help:
 	@echo "... src/game_object.o"
 	@echo "... src/game_object.i"
 	@echo "... src/game_object.s"
+	@echo "... src/light.o"
+	@echo "... src/light.i"
+	@echo "... src/light.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

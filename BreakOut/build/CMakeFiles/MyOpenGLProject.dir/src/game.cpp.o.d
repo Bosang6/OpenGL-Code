@@ -1002,6 +1002,7 @@ CMakeFiles/MyOpenGLProject.dir/src/game.cpp.o: \
   /Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/include/game.h \
   /usr/local/include/GLFW/glfw3.h \
   /Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/include/ballObject.h \
+  /Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/include/light.h \
   /Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/include/particle_generator.h \
   /Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/include/textRenderer.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/usr/include/c++/v1/sstream \

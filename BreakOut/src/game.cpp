@@ -6,6 +6,7 @@
 #include "ballObject.h"
 #include "particle_generator.h"
 #include "textRenderer.h"
+#include "light.h"
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -27,6 +28,11 @@ GameObject *Player;
 TextRenderer *Text;
 
 ParticleGenerator *Particles;
+
+// Lights
+Light *LightGlobal;
+Light *LightBall;
+Light *LightPaddle;
 
 float fpsTimer = 0.0f;
 int FPScounter = 0;
@@ -120,6 +126,9 @@ void Game::Init()
     this->Lives = 3;
 
     this->Score = 0;
+
+    LightBall = new Light(glm::vec3(ballPos.x, ballPos.y, 30.0f), glm::vec3(1.0f, 1.0f, 1.0f));
+    LightPaddle = new Light(glm::vec3(playerPos, 30.0f), glm::vec3(1.0f, 1.0f, 1.0f));
 }
 
 void Game::Update(float dt)

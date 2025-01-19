@@ -11,6 +11,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/MyOpenGLProject.dir/src/gameLevel.cpp.o.d"
   "CMakeFiles/MyOpenGLProject.dir/src/game_object.cpp.o"
   "CMakeFiles/MyOpenGLProject.dir/src/game_object.cpp.o.d"
+  "CMakeFiles/MyOpenGLProject.dir/src/light.cpp.o"
+  "CMakeFiles/MyOpenGLProject.dir/src/light.cpp.o.d"
   "CMakeFiles/MyOpenGLProject.dir/src/main.cpp.o"
   "CMakeFiles/MyOpenGLProject.dir/src/main.cpp.o.d"
   "CMakeFiles/MyOpenGLProject.dir/src/particle_generator.cpp.o"

@@ -7,6 +7,7 @@
 
 #include "gameLevel.h"
 #include "ballObject.h"
+#include "light.h"
 
 // Represents the current state of the game
 enum GameState {
@@ -70,6 +71,7 @@ public:
 
     // 分数
     int Score;
+
 };
 
 #endif

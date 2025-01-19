@@ -1,0 +1,3 @@
+/Users/xiaobo/Desktop/uni/OpenGLCode/PointLight/build/CMakeFiles/MyOpenGLProject.dir
+/Users/xiaobo/Desktop/uni/OpenGLCode/PointLight/build/CMakeFiles/edit_cache.dir
+/Users/xiaobo/Desktop/uni/OpenGLCode/PointLight/build/CMakeFiles/rebuild_cache.dir

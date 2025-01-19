@@ -13,6 +13,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/src/game.cpp" "CMakeFiles/MyOpenGLProject.dir/src/game.cpp.o" "gcc" "CMakeFiles/MyOpenGLProject.dir/src/game.cpp.o.d"
   "/Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/src/gameLevel.cpp" "CMakeFiles/MyOpenGLProject.dir/src/gameLevel.cpp.o" "gcc" "CMakeFiles/MyOpenGLProject.dir/src/gameLevel.cpp.o.d"
   "/Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/src/game_object.cpp" "CMakeFiles/MyOpenGLProject.dir/src/game_object.cpp.o" "gcc" "CMakeFiles/MyOpenGLProject.dir/src/game_object.cpp.o.d"
+  "/Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/src/light.cpp" "CMakeFiles/MyOpenGLProject.dir/src/light.cpp.o" "gcc" "CMakeFiles/MyOpenGLProject.dir/src/light.cpp.o.d"
   "/Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/src/main.cpp" "CMakeFiles/MyOpenGLProject.dir/src/main.cpp.o" "gcc" "CMakeFiles/MyOpenGLProject.dir/src/main.cpp.o.d"
   "/Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/src/particle_generator.cpp" "CMakeFiles/MyOpenGLProject.dir/src/particle_generator.cpp.o" "gcc" "CMakeFiles/MyOpenGLProject.dir/src/particle_generator.cpp.o.d"
   "/Users/xiaobo/Desktop/uni/OpenGLCode/BreakOut/src/resource_manager.cpp" "CMakeFiles/MyOpenGLProject.dir/src/resource_manager.cpp.o" "gcc" "CMakeFiles/MyOpenGLProject.dir/src/resource_manager.cpp.o.d"
